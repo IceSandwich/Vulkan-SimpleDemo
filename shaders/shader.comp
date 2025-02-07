@@ -1,0 +1,11 @@
+#version 450
+
+layout(std140, binding=1) buffer InputData {
+	uint data[];
+};
+
+layout (local_size_x = 10, local_size_y = 1, local_size_z = 1) in; // gl_WorkGroupSize == local_size_x/y/z
+
+void main() {
+	data[gl_GlobalInvocationID.x] = 600;
+}
